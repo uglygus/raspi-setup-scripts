@@ -1,16 +1,21 @@
 #!/bin/sh
 
- 
+TORRENTING_DIR="/home/cooper/torrenting"
+COMPLETED_DIR="$TORRENTING_DIR/complete"
+INPROGRESS_DIR="$TORRENTING_DIR/inprogress"
+TORRENTS_DIR="$TORRENTING_DIR/torrents"
  
 sudo apt update && sudo apt upgrade -y
 
 sudo apt install transmission-daemon -y
 
-mkdir -p /media/external-drive/torrent-inprogress
-mkdir -p /media/external-drive/torrent-complete
+mkdir -p $TORRENTS_DIR
+mkdir -p $COMPLETED_DIR
+mkdir -p $INPROGRESS_DIR
+mkdir -p $TORRENTS_DIR
 
-sudo chown debian-transmission:debian-transmission /media/external-drive/torrent-inprogress
-sudo chown debian-transmission:debian-transmission /media/external-drive/torrent-complete
+sudo chown debian-transmission:debian-transmission $INPROGRESS_DIR
+sudo chown debian-transmission:debian-transmission $COMPLETED_DIR
 
 sudo systemctl stop transmission-daemon
 

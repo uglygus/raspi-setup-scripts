@@ -7,7 +7,7 @@
 ## Installation
 
 ```
-curl -L  <https://github.com/uglygus/raspi-setup-scripts/archive/refs/heads/main.zip> --output raspi-setup-scripts.zip
+curl -L  https://github.com/uglygus/raspi-setup-scripts/archive/refs/heads/main.zip --output raspi-setup-scripts.zip
 
 unzip raspi-setup-scripts.zip
 cd raspi-setup-scripts
@@ -16,4 +16,3 @@ chmod +x ./sh/*
 ./sh/setup-transmission.sh
 
 ```
-

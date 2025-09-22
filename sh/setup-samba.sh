@@ -1,11 +1,15 @@
+#!/bin/sh
 
 
 SHARED_DIR="/home/cooper/shared"
+USERNAME="cooper"
+
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install samba samba-common-bin -y
+
 mkdir -p $SHARED_DIR
-sudo chown -R pi:pi $SHARED_DIR
+sudo chown -R $USERNAME:$USERNAME $SHARED_DIR
 
 sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
 sudo tee -a /etc/samba/smb.conf > /dev/null <<EOF
@@ -26,17 +30,17 @@ EOF
    sudo systemctl restart smbd
 
 
-print(
-""" 
-Access the share
+cat <<'EOF'
 
-From Windows Explorer:
+Access the share:
+Windows Explorer:
 \\raspberrypi\Shared
 (or replace raspberrypi with its IP, e.g. \\192.168.1.42\Shared)
 
-From Linux:
+Linux commandline:
 smbclient //raspberrypi/Shared -U pi
 
-Or mount with:
+MacOS or Linux mount with:
 sudo mount -t cifs //raspberrypi/Shared /mnt -o username=pi,password=yourpassword
-""")
+
+EOF

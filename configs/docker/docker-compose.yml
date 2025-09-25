@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  homepage:
+    image: homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      config:
+        - ./homepage/config:/app/config
+
+  emby:
+    image: emby/embyserver:latest
+    container_name: emby
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ./emby/config:/config
+      - /home/pi/media:/mnt/media
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ./prowlarr/config:/config
+      - /home/pi/media:/mnt/media
+
+  transmission:
+    image: linuxserver/transmission:latest
+    container_name: transmission
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      TRANSMISSION_DOWNLOAD_DIR: /mnt/torrents/completed
+      TRANSMISSION_INCOMPLETE_DIR: /mnt/torrents/inprogress
+      TRANSMISSION_WATCH_DIR: /mnt/torrents/torrents
+    volumes:
+      - ./transmission/config:/config
+      - /home/shared/pishare/torrenting:/mnt/torrents

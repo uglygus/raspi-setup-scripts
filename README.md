@@ -11,8 +11,18 @@ curl -L  https://github.com/uglygus/raspi-setup-scripts/archive/refs/heads/main.
 
 unzip raspi-setup-scripts.zip
 cd raspi-setup-scripts
-chmod +x ./sh/*
-./sh/setup-samba.sh
-./sh/setup-transmission.sh
+chmod +x *.sh
+./setup-samba.sh
+./setup-transmission.sh
 
 ```
+
+## TODO
+
+- Look into FlexGet
+- Start with pre-populated config file. That wil be simplest. Rather than programmatically changing individual parts.
+- add a comment to them.
+
+# This config file created by setup-samba.sh on datetime
+
+# Assuming

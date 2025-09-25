@@ -1,0 +1,19 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- My First Group:
+    - My First Service:
+        href: http://localhost/
+        description: Homepage is clubnky!
+
+- Media:
+    - Transmission:
+        icon: transmission.png # icons found here https://github.com/walkxcode/dashboard-icons
+        href: http://raspberrypi.local:9091
+        description: Torrent downloader
+    - Emby:
+        icon: emby.png # icons found here https://github.com/walkxcode/dashboard-icons
+        href: http://raspberrypi.local:8096
+        description: Watch TV and Movies
+

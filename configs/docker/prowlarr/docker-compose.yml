@@ -1,0 +1,15 @@
+---
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    volumes:
+      - /home/pi/docker/radarr/config:/app/config
+    ports:
+      - 9696:9696
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: raspberrypi.local:3000
+      PUID: $PUID
+      PGID: $PUID
+      TZ: $TZ
+    restart: unless-stopped
